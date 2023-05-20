@@ -21,8 +21,13 @@ public class CategoryResource {
 
     @PostMapping("/new")
     public ResponseEntity<Void> save(@RequestBody Category category) {
-        category.setId(null);
         service.salvar(category);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Category>> getAll() {
+        List<Category> categories = service.getAll();
+        return ResponseEntity.ok(categories);
     }
 }
